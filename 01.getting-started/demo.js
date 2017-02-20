@@ -154,6 +154,9 @@ function runStubDemoReturn() {
 runSpyDemo();
 console.log('\n');
 
+runStubDemo();
+console.log('\n');
+
 runStubDemoReplace();
 console.log('\n');
 
