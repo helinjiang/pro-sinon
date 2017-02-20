@@ -80,7 +80,7 @@ describe('Get QQ from cookie', function () {
             return 'o12345678';
         });
 
-        expect(Utils.uin()).to.equal(12345678);
+        expect(Utils.getUin()).to.equal(12345678);
     }));
 
     it('cookie value is empty, so QQ is null', sinon.test(function () {
@@ -88,6 +88,6 @@ describe('Get QQ from cookie', function () {
             return '';
         });
 
-        expect(Utils.uin()).to.be.null;
+        expect(Utils.getUin()).to.be.null;
     }));
 });
