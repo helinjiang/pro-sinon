@@ -10,21 +10,18 @@ describe('No sinon - just how it works normally', function () {
 });
 
 describe('Replace existing method', function () {
-    describe('by stub', function () {
-        var newHi = function (say) {
-            return say + ' from new method';
-        };
+    var newHi = function (say) {
+        return say + ' from new method';
+    };
 
-        it('replaces method with newHi', sinon.test(function () {
-            this.stub(Utils, 'sayHi', newHi);
+    it('replaces method with newHi', sinon.test(function () {
+        this.stub(Utils, 'sayHi', newHi);
 
-            expect(Utils.sayHi('Sinon')).to.equal('Sinon from new method');
-        }));
-    });
+        expect(Utils.sayHi('Sinon')).to.equal('Sinon from new method');
+    }));
 });
 
-describe('Replace return', function () {
-
+describe('Replace method returns', function () {
     // Stubbing
     it('change to return Mocha', sinon.test(function () {
         this.stub(Utils, 'sayHi').returns('Mocha');
@@ -38,5 +35,4 @@ describe('Replace return', function () {
 
         expect(Utils.sayHi()).to.equal('Chai');
     }));
-
 });
