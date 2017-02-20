@@ -1,23 +1,23 @@
 var sinon = require('sinon');
 
-// 目标
-var user = {
-    setName: function (name) {
-        this.name = name;
-    }
-};
-
 /**
  * 测试 sinon.spy
  */
 function runSpyDemo() {
+    // 目标
+    var Persion = {
+        setName: function (name) {
+            this.name = name;
+        }
+    };
+
     // 1.为setName方法创建一个spy
-    var setNameSpy = sinon.spy(user, 'setName');
+    var setNameSpy = sinon.spy(Persion, 'setName');
 
     // 2. 现在开始，每次调用这个方法时，相关信息都会被记录下来
 
     // 2.1 第一次调用，调用之后可以通过spy对象可以查看这些记录的信息
-    user.setName('Name 1');
+    Persion.setName('Name 1');
 
     // The number of recorded calls.
     console.log(setNameSpy.callCount); //output: 1
@@ -32,7 +32,7 @@ function runSpyDemo() {
     console.log(setNameSpy.calledTwice); //output: false
 
     // 2.2 第二次调用，调用之后可以通过spy对象可以查看这些记录的信息
-    user.setName('Name2');
+    Persion.setName('Name2');
 
     // The number of recorded calls.
     console.log(setNameSpy.callCount); //output: 2
@@ -113,5 +113,48 @@ function runStubDemo() {
     console.log(post.calledWith('no' + expectedUrl, expectedParams)); // false
 }
 
+/**
+ * 测试 sinon.stub，替换已经存在的方法
+ */
+function runStubDemoReplace() {
+    var Person = {
+        sayHi: function (saying) {
+            return "hello, " + saying;
+        }
+    };
+
+    console.log(Person.sayHi('Call')); // hello, Call
+
+    var newHi = function (say) {
+        return say + ' from new method';
+    };
+
+    sinon.stub(Person, 'sayHi', newHi);
+
+    console.log(Person.sayHi('Call')); // Call from new method
+}
+
+/**
+ * 测试 sinon.stub，替换返回值
+ */
+function runStubDemoReturn() {
+    var Person = {
+        sayHi: function (saying) {
+            return "hello, " + saying;
+        }
+    };
+
+    console.log(Person.sayHi('Sinon')); // hello, Sinon
+
+    sinon.stub(Person, 'sayHi').returns('hola');
+
+    console.log(Person.sayHi('Sinon')); //  hola
+}
+
 runSpyDemo();
-runStubDemo();
+console.log('\n');
+
+runStubDemoReplace();
+console.log('\n');
+
+runStubDemoReturn();
