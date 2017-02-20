@@ -1,0 +1,22 @@
+{
+  "name": "pro-sinon",
+  "version": "0.0.1",
+  "description": "Some demos of Sinon",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/helinjiang/pro-sinon.git"
+  },
+  "keywords": [
+    "sinon"
+  ],
+  "author": "helinjiang",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/helinjiang/pro-sinon/issues"
+  },
+  "homepage": "https://github.com/helinjiang/pro-sinon#readme"
+}
