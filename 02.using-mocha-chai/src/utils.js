@@ -19,8 +19,8 @@ exports.getCookie = function (name) {
 };
 
 /**
- * 获取QQ号
- * @return {Number}
+ * 获取QQ号，其在cookie中的格式类似 uin=o12345678，需要返回 12345678
+ * @return {number}
  */
 exports.uin = function () {
     var u = this.getCookie('uin');

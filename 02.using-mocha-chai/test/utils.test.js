@@ -64,3 +64,30 @@ describe('Spy on existing method', function () {
         Utils.sayHi.restore();
     }));
 });
+
+describe('Get QQ from cookie', function () {
+
+    it('return target mock value when getCookie', sinon.test(function () {
+        this.stub(Utils, 'getCookie', function (value) {
+            return value;
+        });
+
+        expect(Utils.getCookie('o12345678')).to.equal('o12345678');
+    }));
+
+    it('cookie value is o12345678, so QQ is 12345678', sinon.test(function () {
+        this.stub(Utils, 'getCookie', function () {
+            return 'o12345678';
+        });
+
+        expect(Utils.uin()).to.equal(12345678);
+    }));
+
+    it('cookie value is empty, so QQ is null', sinon.test(function () {
+        this.stub(Utils, 'getCookie', function () {
+            return '';
+        });
+
+        expect(Utils.uin()).to.be.null;
+    }));
+});
