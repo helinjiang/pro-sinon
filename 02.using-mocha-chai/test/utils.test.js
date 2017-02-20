@@ -36,3 +36,31 @@ describe('Replace method returns', function () {
         expect(Utils.sayHi()).to.equal('Chai');
     }));
 });
+
+describe('Spy on existing method', function () {
+    it('should check argument', sinon.test(function () {
+        sinon.spy(Utils, 'sayHi');
+
+        // first call
+        Utils.sayHi('First');
+
+        expect(Utils.sayHi.called).to.be.true;
+        expect(Utils.sayHi.calledOnce).to.be.true;
+        expect(Utils.sayHi.calledTwice).to.be.false;
+        expect(Utils.sayHi.callCount).to.equal(1);
+
+        // second call
+        Utils.sayHi('Second');
+
+        expect(Utils.sayHi.called).to.be.true;
+        expect(Utils.sayHi.calledOnce).to.be.false;
+        expect(Utils.sayHi.calledTwice).to.be.true;
+        expect(Utils.sayHi.callCount).to.equal(2);
+
+        expect(Utils.sayHi.getCall(0).args[0]).to.equal('First');
+        expect(Utils.sayHi.getCall(1).args[0]).to.equal('Second');
+
+        // Remove spy
+        Utils.sayHi.restore();
+    }));
+});
