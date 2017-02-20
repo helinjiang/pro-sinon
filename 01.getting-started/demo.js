@@ -17,7 +17,7 @@ function runSpyDemo() {
     // 2. 现在开始，每次调用这个方法时，相关信息都会被记录下来
 
     // 2.1 第一次调用，调用之后可以通过spy对象可以查看这些记录的信息
-    user.setName('Darth Vader');
+    user.setName('Name 1');
 
     // The number of recorded calls.
     console.log(setNameSpy.callCount); //output: 1
@@ -30,10 +30,9 @@ function runSpyDemo() {
 
     // true if the spy was called exactly twice
     console.log(setNameSpy.calledTwice); //output: false
-    // 现在开始，每次调用这个方法时，相关信息都会被记录下来
-    user.setName('Darth Vader');
 
     // 2.2 第二次调用，调用之后可以通过spy对象可以查看这些记录的信息
+    user.setName('Name2');
 
     // The number of recorded calls.
     console.log(setNameSpy.callCount); //output: 2
